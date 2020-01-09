@@ -1,0 +1,25 @@
+<script>
+    //data base
+    secret_user_name = "admin"
+    secret_password = "1234"
+
+    //user interface
+    user_name = prompt("Your user name")
+    password = prompt("Your password")
+
+    //logic
+    access = secret_user_name == user_name && secret_password == password
+
+    // alert(
+    //     "Access:" + " " + access
+    // )
+
+    document.write(
+        "<h1>Access:" + " " + access + "</h1>"
+    )
+    document.write(
+        '<img src="' + access + '.png">'
+    )
+
+
+</script>
