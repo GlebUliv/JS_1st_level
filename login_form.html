@@ -1,0 +1,22 @@
+<script>
+    let login_name = prompt ("Who is there?");
+
+    if (login_name == "Admin"){
+       
+        let password = prompt( "Your password?" );
+
+        if (password == "Its your boss" ) {
+            alert( "Hello, Boss!!!" );
+        } else if (password == "" || pass == null) {
+             alert( "Canceled" );
+        } else {
+            alert( "Wrong password" );
+        }
+
+    } else if ( login_name == "" || login_name == null) {
+        alert ( "Canceled" );
+    } else {
+        alert ( "I dont know you!" );
+    }
+
+</script>
