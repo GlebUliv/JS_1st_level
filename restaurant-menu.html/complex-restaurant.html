@@ -1,0 +1,114 @@
+<script>
+    // добавляем переменную, которая будет учитывать остаток еды и напитков
+
+    // Database
+    const FOOD_1_NAME = "Pizza"
+    const FOOD_1_PRICE = 70.00 // MDL
+    let quantity_food_1 = 100
+
+    const FOOD_2_NAME = "Pasta"
+    const FOOD_2_PRICE = 30 // MDL
+    let quantity_food_2 = 100
+
+    const DRINK_1_NAME = "Cola"
+    const DRINK_1_PRICE = 15.50 // MDL
+    let quantity_drink_1 = 1000
+
+    let option = -1; // опция выбранная клиентом
+    let total = 0; //MDL
+    let portions_food_1 = 0; // quantity of portions ordered by customer
+    let portions_food_2 = 0;
+    let portions_drink_1 = 0
+
+
+    //Logic
+    function showMeniu(){
+        let meniu = `
+                ########################
+                1. ${ FOOD_1_NAME }  ${FOOD_1_PRICE}MDL
+                2. ${ FOOD_2_NAME}  ${FOOD_2_PRICE}MDL
+                3. ${ DRINK_1_NAME}  ${DRINK_1_PRICE}MDL
+                0. Exit
+                -----------------------------------------
+                total: ${total}MDL
+                ----------------------
+                Portions of Pizza remaining: ${quantity_food_1}
+                ----------------------
+                Portions of Pasta remaining: ${quantity_food_2}
+                ---------------------
+                Portions of Cola remaining: ${quantity_drink_1}
+                ########################
+        ` 
+        option = +prompt( meniu ) 
+
+    }
+    function chooseQuantity(){
+        switch( option ){
+            case 1: 
+                let value_portions_food_1 = +prompt (`Youve chosen "${FOOD_1_NAME}"\nHow many portions?`);
+                // запомнить кол-во порций . проверить, если значение не меньше 1 . вычислить и при помоци alert  вывести стоимость выбранного количества порций
+                ////////////////////////////////////////////////////////////// -> function calculateOption (q, price, name)
+                if ( value_portions_food_1 < 1 ){
+                    alert ("Nope")
+                } else {
+                    alert ("No problem!")
+                    cost_food_1 = value_portions_food_1 * FOOD_1_PRICE;
+                    alert ("The price will be : " + value_portions_food_1 + " " + "x" + " " + FOOD_1_NAME + " " + "=" + " " + cost_food_1 + "MDL" );
+                     total += cost_food_1;
+                }
+                quantity_food_1 = quantity_food_1 - value_portions_food_1;
+                portions_food_1 += quantity_food_1;
+                //////////////////////////////////////////////////////////////////////
+
+            break;
+            case 2:
+                let value_portions_food_2 = +prompt(`Youve chosen "${FOOD_2_NAME}"\nHow many portions?`);
+                if (value_portions_food_2 < 1) {
+                    alert("Nope")
+                } else {
+                    alert("No problem!")
+                    cost_food_2 = value_portions_food_2 * FOOD_2_PRICE;
+                    alert("The price will be : " + value_portions_food_2 + " " + "x" + " " + FOOD_2_NAME + " " + "=" + " " + cost_food_2 + "MDL");
+                    total += cost_food_2;
+                }
+                quantity_food_2 = quantity_food_2 - value_portions_food_2;
+                portions_food_2 += quantity_food_2;
+            break;
+                
+            case 3:
+                let value_portions_drink_1 = +prompt(`Youve chosen "${DRINK_1_NAME}"\nHow many portions?`);
+                if (value_portions_drink_1 < 1) {
+                    alert("Nope")
+                } else {
+                    alert("No problem!")
+                    cost_drink_1 = value_portions_drink_1 * DRINK_1_PRICE;
+                    alert("The price will be : " + value_portions_drink_1 + " " + "x" + " " + DRINK_1_NAME + " " + "=" + " " + cost_drink_1 + "MDL");
+                    total += cost_drink_1;
+                }
+                quantity_drink_1 = quantity_drink_1 - value_portions_drink_1;
+                portions_drink_1 += quantity_drink_1;
+                
+            break;
+
+            case 0: 
+            if( total > 300 ){
+                alert("Your delivery will be FREE!!!!")
+            } else {
+                total = total + 50
+                alert ("Your delivery will cost +50 MDL to total price!")
+            }
+            alert ("Thank you for your order! Total price will be:" + " " + total + " " + "MDL"); break;
+
+            default: alert ("We dont have such option!")
+        }
+    }
+
+    //пока выбранная опция не равно 0, продолжаем цикл
+    while(option != 0) {
+        showMeniu();
+        chooseQuantity();
+    }
+    
+
+
+</script>
